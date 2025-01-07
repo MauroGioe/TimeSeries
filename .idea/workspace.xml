@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="adb4f21e-a74a-46b7-91b3-67d6ddd2778f" name="Changes" comment="adding test features">
+    <list default="true" id="adb4f21e-a74a-46b7-91b3-67d6ddd2778f" name="Changes" comment="time feature remake">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feature_engineering.py" beforeDir="false" afterPath="$PROJECT_DIR$/feature_engineering.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradient_boosting.py" beforeDir="false" afterPath="$PROJECT_DIR$/gradient_boosting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/AEP_hourly_test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/AEP_hourly_test.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/AEP_hourly_train.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/AEP_hourly_train.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +87,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736201570632</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="time feature remake">
+      <option name="closed" value="true" />
+      <created>1736275438559</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1736275438559</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,6 +114,7 @@
     <MESSAGE value="typo" />
     <MESSAGE value="memory error if you don't put a limit to the features" />
     <MESSAGE value="adding test features" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding test features" />
+    <MESSAGE value="time feature remake" />
+    <option name="LAST_COMMIT_MESSAGE" value="time feature remake" />
   </component>
 </project>

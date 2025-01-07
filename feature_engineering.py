@@ -15,5 +15,5 @@ test = data[data['Datetime'] >= '2016-01-01']
 
 
 
-train.to_csv("./input/AEP_hourly_train.csv")
-test.to_csv("./input/AEP_hourly_test.csv")
+train.to_csv("./input/AEP_hourly_train.csv", index=False)
+test.to_csv("./input/AEP_hourly_test.csv", index=False)
