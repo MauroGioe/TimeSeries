@@ -33,4 +33,4 @@ y_pred = best_model.predict(x_test)
 rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 
 rmse
-#rmse= 1774
+#rmse= 1812

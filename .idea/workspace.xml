@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="adb4f21e-a74a-46b7-91b3-67d6ddd2778f" name="Changes" comment="implemented gradient boosting with GS and TSS">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="adb4f21e-a74a-46b7-91b3-67d6ddd2778f" name="Changes" comment="setted random seed">
+      <change beforePath="$PROJECT_DIR$/gradient_boosting.py" beforeDir="false" afterPath="$PROJECT_DIR$/gradient_boosting.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736280185854</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="setted random seed">
+      <option name="closed" value="true" />
+      <created>1736287545832</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1736287545832</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -132,6 +140,7 @@
     <MESSAGE value="time feature remake" />
     <MESSAGE value="save index = false" />
     <MESSAGE value="implemented gradient boosting with GS and TSS" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented gradient boosting with GS and TSS" />
+    <MESSAGE value="setted random seed" />
+    <option name="LAST_COMMIT_MESSAGE" value="setted random seed" />
   </component>
 </project>
