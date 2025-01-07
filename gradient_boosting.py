@@ -10,12 +10,12 @@ target= "AEP_MW"
 
 
 param_grid = {
-    'max_depth': [3, 5, 7],
+    'max_depth': [2, 4, 6],
     'learning_rate': [0.01, 0.5, 1],
     'n_estimators': [10, 100, 200]
 }
-model =  XGBRegressor(objective = 'reg:squarederror')
-tss = TimeSeriesSplit(n_splits = 5, test_size = 24*365, gap = 24)
+model =  XGBRegressor(objective = 'reg:squarederror', seed = 123)
+tss = TimeSeriesSplit(n_splits = 5, test_size = 24*365)
 grid_search = GridSearchCV(estimator = model, cv = tss, param_grid = param_grid)
 
 y_train = train[target]
