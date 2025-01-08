@@ -1,8 +1,22 @@
 import pandas as pd
-from xgboost import XGBRegressor
+from xgboost import XGBRegressor, plot_importance
 from sklearn.model_selection import TimeSeriesSplit, GridSearchCV
 import numpy as np
 from sklearn.metrics import mean_squared_error
+import matplotlib
+matplotlib.use("QtAgg")
+import matplotlib.pyplot as plt
+matplotlib.interactive(True)
+
+from sklearn.inspection import permutation_importance
+
+
+def mean_absolute_percentage_error(y_true, y_pred):
+    y_true, y_pred = np.array(y_true), np.array(y_pred)
+    return np.mean(np.abs((y_true - y_pred) / y_true)) * 100
+
+
+
 
 train = pd.read_csv("./input/AEP_hourly_train.csv")
 test = pd.read_csv("./input/AEP_hourly_test.csv")
@@ -10,7 +24,7 @@ target= "AEP_MW"
 
 
 param_grid = {
-    'max_depth': [2, 4, 6],
+    'max_depth': [1, 2, 3, 4, 5, 6],
     'learning_rate': [0.01, 0.5, 1],
     'n_estimators': [10, 100, 200]
 }
@@ -31,6 +45,15 @@ x_test = test.drop([target, "Datetime"], axis=1)
 
 y_pred = best_model.predict(x_test)
 rmse = np.sqrt(mean_squared_error(y_test, y_pred))
-
-rmse
+print (f"The root mean square error is equal to {np.round(rmse)}")
 #rmse= 1812
+
+
+mape = mean_absolute_percentage_error(y_test, y_pred)
+print (f"The mean absolute percentage error is equal to {np.round(mape)}")
+#mape = 9%
+
+perm_importance = permutation_importance(best_model, x_test, y_test, scoring = "neg_root_mean_squared_error")
+sorted_idx = perm_importance.importances_mean.argsort()
+plt.barh(x_test.columns[sorted_idx], perm_importance.importances_mean[sorted_idx])
+plt.xlabel("Permutation Importance")
