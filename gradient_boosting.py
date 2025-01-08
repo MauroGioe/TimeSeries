@@ -1,5 +1,5 @@
 import pandas as pd
-from xgboost import XGBRegressor, plot_importance
+from xgboost import XGBRegressor
 from sklearn.model_selection import TimeSeriesSplit, GridSearchCV
 import numpy as np
 from sklearn.metrics import mean_squared_error
@@ -46,7 +46,7 @@ x_test = test.drop([target, "Datetime"], axis=1)
 y_pred = best_model.predict(x_test)
 rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 print (f"The root mean square error is equal to {np.round(rmse)}")
-#rmse= 1812
+#rmse= 1796
 
 
 mape = mean_absolute_percentage_error(y_test, y_pred)

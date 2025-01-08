@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="adb4f21e-a74a-46b7-91b3-67d6ddd2778f" name="Changes" comment="setted random seed">
+    <list default="true" id="adb4f21e-a74a-46b7-91b3-67d6ddd2778f" name="Changes" comment="implemented mape and permutation feature importance">
+      <change afterPath="$PROJECT_DIR$/lstm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feature_engineering.py" beforeDir="false" afterPath="$PROJECT_DIR$/feature_engineering.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gradient_boosting.py" beforeDir="false" afterPath="$PROJECT_DIR$/gradient_boosting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/AEP_hourly_test.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/AEP_hourly_test.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/AEP_hourly_train.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input/AEP_hourly_train.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736287644277</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="implemented mape and permutation feature importance">
+      <option name="closed" value="true" />
+      <created>1736354461771</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1736354461771</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,6 +162,7 @@
     <MESSAGE value="save index = false" />
     <MESSAGE value="implemented gradient boosting with GS and TSS" />
     <MESSAGE value="setted random seed" />
-    <option name="LAST_COMMIT_MESSAGE" value="setted random seed" />
+    <MESSAGE value="implemented mape and permutation feature importance" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented mape and permutation feature importance" />
   </component>
 </project>

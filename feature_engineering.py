@@ -6,7 +6,9 @@ data["Datetime"] = pd.to_datetime(data['Datetime'])
 data["hour"] = data["Datetime"].dt.hour
 data["day_of_week"] = data["Datetime"].dt.dayofweek
 data["day_of_month"] = data["Datetime"].dt.day
+data['day_of_year'] = data['Datetime'].dt.dayofyear
 data["month"] = data["Datetime"].dt.month
+data['quarter'] = data['Datetime'].dt.quarter
 data["year"] = data["Datetime"].dt.year
 
 
