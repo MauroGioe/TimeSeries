@@ -5,6 +5,7 @@ from keras.layers import Dense,Dropout,SimpleRNN,LSTM
 from keras.models import Sequential
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
 
 train = pd.read_csv("./input/AEP_hourly_train.csv")
 test = pd.read_csv("./input/AEP_hourly_test.csv")
@@ -104,3 +105,5 @@ print (f"The root mean square error is equal to {np.round(rmse, 2)}")
 #mape = mean_absolute_percentage_error(y_test, y_pred)
 #divide by 0
 
+r2 = r2_score(y_test, y_pred)
+print (f"The R^2 is equal to {np.round(r2, 2)}")
