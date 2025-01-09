@@ -107,3 +107,4 @@ print (f"The root mean square error is equal to {np.round(rmse, 2)}")
 
 r2 = r2_score(y_test, y_pred)
 print (f"The R^2 is equal to {np.round(r2, 2)}")
+#R^2=0.98
