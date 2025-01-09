@@ -95,7 +95,6 @@ lstm_model.compile(optimizer = "adam", loss = "MSE")
 lstm_model.fit(X_train, y_train, epochs = 20, batch_size = 240, callbacks = callbacks,
                validation_data = (X_valid, y_valid))
 
-lstm_model.history()
 
 y_pred = lstm_model.predict(X_test)
 
