@@ -11,7 +11,7 @@ data["month"] = data["Datetime"].dt.month
 data['quarter'] = data['Datetime'].dt.quarter
 data["year"] = data["Datetime"].dt.year
 
-
+data.sort_values('Datetime', inplace=True, ascending=True)
 train = data[data['Datetime'] < '2016-01-01']
 test = data[data['Datetime'] >= '2016-01-01']
 
