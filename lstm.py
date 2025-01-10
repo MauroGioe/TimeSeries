@@ -7,6 +7,10 @@ from keras._tf_keras.keras.models import Sequential
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
+import matplotlib
+matplotlib.use("QtAgg")
+import matplotlib.pyplot as plt
+
 
 tf.keras.utils.set_random_seed(123)
 train = pd.read_csv("./input/AEP_hourly_train.csv")
@@ -19,7 +23,7 @@ def normalize_data(df):
     scaler = MinMaxScaler()
     normalized_data = scaler.fit_transform(df[target].values.reshape(-1,1))
     df[target] = normalized_data
-    return df
+    return df, scaler
 
 def load_data(data, seq_len):
     X = []
@@ -52,8 +56,8 @@ def mean_absolute_percentage_error(y_true, y_pred):
 
 
 
-train_norm = normalize_data(train)
-test_norm = normalize_data(test)
+train_norm, _ = normalize_data(train)
+test_norm, scaler = normalize_data(test)
 train_norm = train_norm[target]
 test_norm = test_norm[target]
 
@@ -95,7 +99,7 @@ callbacks = [earlystop, learning_rate_reduction]
 
 
 lstm_model.compile(optimizer = "adam", loss = "MSE")
-lstm_model.fit(X_train, y_train, epochs = 20, batch_size = 240, callbacks = callbacks,
+history = lstm_model.fit(X_train, y_train, epochs = 20, batch_size = 240, callbacks = callbacks,
                validation_data = (X_valid, y_valid))
 
 
@@ -110,3 +114,21 @@ print (f"The root mean square error is equal to {np.round(rmse, 2)}")
 r2 = r2_score(y_test, y_pred)
 print (f"The R^2 is equal to {np.round(r2, 2)}")
 #R^2=0.98
+
+
+
+plt.figure(figsize=(8,4))
+plt.plot(history.history['loss'], label='Train Loss')
+plt.plot(history.history['val_loss'], label='Validation Loss')
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epochs')
+plt.legend(loc='upper right')
+plt.show()
+
+
+y_test_original = scaler.inverse_transform(y_test.reshape(-1, 1)).flatten()
+y_pred_original_scale = scaler.inverse_transform(y_pred).flatten()
+
+results_LSTM = pd.DataFrame({"Date":test["Datetime"][24:], 'Actual': y_test_original,
+                             'Predicted': y_pred_original_scale})
