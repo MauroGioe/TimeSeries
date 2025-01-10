@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="adb4f21e-a74a-46b7-91b3-67d6ddd2778f" name="Changes" comment="fix data sorted by datetime">
+    <list default="true" id="adb4f21e-a74a-46b7-91b3-67d6ddd2778f" name="Changes" comment="updated with sorted data">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradient_boosting.py" beforeDir="false" afterPath="$PROJECT_DIR$/gradient_boosting.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -209,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736531294631</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="updated with sorted data">
+      <option name="closed" value="true" />
+      <created>1736531983669</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1736531983669</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -241,6 +248,7 @@
     <MESSAGE value="added R^2 for gradient boosting" />
     <MESSAGE value="added loss plot and dataframe with prediction on the original scale" />
     <MESSAGE value="fix data sorted by datetime" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix data sorted by datetime" />
+    <MESSAGE value="updated with sorted data" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated with sorted data" />
   </component>
 </project>

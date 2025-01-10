@@ -130,5 +130,19 @@ plt.show()
 y_test_original = scaler.inverse_transform(y_test.reshape(-1, 1)).flatten()
 y_pred_original_scale = scaler.inverse_transform(y_pred).flatten()
 
+#y values start from sequence length, in this case from 24
 results_LSTM = pd.DataFrame({"Date":test["Datetime"][24:], 'Actual': y_test_original,
                              'Predicted': y_pred_original_scale})
+
+
+#Prediction vs actual values
+range_x=[x for x in range(200)]
+
+plt.figure(figsize=(20,6))
+
+plt.plot(range_x, y_test_original[:200], marker='.', label="actual", color='purple')
+plt.plot(range_x, y_pred_original_scale[:200], '-', label="prediction", color='red')
+
+plt.ylabel('Global_active_power', size=14)
+plt.xlabel('Time step', size=14)
+plt.legend(fontsize=16)
