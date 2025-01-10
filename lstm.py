@@ -99,7 +99,7 @@ callbacks = [earlystop, learning_rate_reduction]
 
 
 lstm_model.compile(optimizer = "adam", loss = "MSE")
-history = lstm_model.fit(X_train, y_train, epochs = 20, batch_size = 240, callbacks = callbacks,
+history = lstm_model.fit(X_train, y_train, epochs = 25, batch_size = 240, callbacks = callbacks,
                validation_data = (X_valid, y_valid))
 
 
@@ -107,13 +107,13 @@ y_pred = lstm_model.predict(X_test)
 
 rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 print (f"The root mean square error is equal to {np.round(rmse, 2)}")
-#rmse= 0.03
+#rmse= 0.02
 #mape = mean_absolute_percentage_error(y_test, y_pred)
 #divide by 0
 
 r2 = r2_score(y_test, y_pred)
 print (f"The R^2 is equal to {np.round(r2, 2)}")
-#R^2=0.98
+#R^2=0.99
 
 
 

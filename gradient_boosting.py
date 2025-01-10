@@ -46,7 +46,7 @@ x_test = test.drop([target, "Datetime"], axis=1)
 y_pred = best_model.predict(x_test)
 rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 print (f"The root mean square error is equal to {np.round(rmse)}")
-#rmse= 1796
+#rmse= 1776
 
 
 mape = mean_absolute_percentage_error(y_test, y_pred)
@@ -55,7 +55,7 @@ print (f"The mean absolute percentage error is equal to {np.round(mape)}")
 
 r2 = r2_score(y_test, y_pred)
 print (f"The R^2 is equal to {np.round(r2, 2)}")
-#R^2=0.47
+#R^2=0.49
 
 perm_importance = permutation_importance(best_model, x_test, y_test, scoring = "neg_root_mean_squared_error")
 sorted_idx = perm_importance.importances_mean.argsort()
