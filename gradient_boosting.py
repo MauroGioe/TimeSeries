@@ -2,7 +2,7 @@ import pandas as pd
 from xgboost import XGBRegressor
 from sklearn.model_selection import TimeSeriesSplit, GridSearchCV
 import numpy as np
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib
 matplotlib.use("QtAgg")
 import matplotlib.pyplot as plt
@@ -52,6 +52,10 @@ print (f"The root mean square error is equal to {np.round(rmse)}")
 mape = mean_absolute_percentage_error(y_test, y_pred)
 print (f"The mean absolute percentage error is equal to {np.round(mape)}")
 #mape = 9%
+
+r2 = r2_score(y_test, y_pred)
+print (f"The R^2 is equal to {np.round(r2, 2)}")
+#R^2=0.47
 
 perm_importance = permutation_importance(best_model, x_test, y_test, scoring = "neg_root_mean_squared_error")
 sorted_idx = perm_importance.importances_mean.argsort()
