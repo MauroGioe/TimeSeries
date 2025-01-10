@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="adb4f21e-a74a-46b7-91b3-67d6ddd2778f" name="Changes" comment="removed typo">
+    <list default="true" id="adb4f21e-a74a-46b7-91b3-67d6ddd2778f" name="Changes" comment="added R^2 for lstm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +159,23 @@
       <option name="project" value="LOCAL" />
       <updated>1736462238979</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="added R^2 for lstm">
+      <option name="closed" value="true" />
+      <created>1736462752801</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1736462752801</updated>
+    </task>
+    <task id="LOCAL-00015" summary="added R^2 for lstm">
+      <option name="closed" value="true" />
+      <created>1736462784654</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1736462784654</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -187,6 +202,7 @@
     <MESSAGE value="minor addittions and started lstm" />
     <MESSAGE value="implemented lstm" />
     <MESSAGE value="removed typo" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed typo" />
+    <MESSAGE value="added R^2 for lstm" />
+    <option name="LAST_COMMIT_MESSAGE" value="added R^2 for lstm" />
   </component>
 </project>

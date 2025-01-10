@@ -1,12 +1,14 @@
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
-from keras.layers import Dense,Dropout,SimpleRNN,LSTM
-from keras.models import Sequential
+import tensorflow as tf
+from keras._tf_keras.keras.layers import Dense,Dropout,LSTM
+from keras._tf_keras.keras.models import Sequential
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
 
+tf.keras.utils.set_random_seed(123)
 train = pd.read_csv("./input/AEP_hourly_train.csv")
 test = pd.read_csv("./input/AEP_hourly_test.csv")
 target= "AEP_MW"
