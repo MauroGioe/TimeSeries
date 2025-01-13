@@ -25,16 +25,18 @@ def normalize_data(df):
     df[target] = normalized_data
     return df, scaler
 
-def load_data(data, seq_len):
+def load_data(data, seq_len, multi_steps):
     X = []
     y = []
-    for i in range(seq_len, len(data)):
+    multi_steps_len = multi_steps-1
+    for i in range(seq_len, len(data)-multi_steps_len):
         X.append(data.iloc[i-seq_len : i])
-        y.append(data.iloc[i])
+        y.append(data.iloc[i:i+multi_steps])
 
     X = np.array(X)
     X = np.reshape(X, (X.shape[0], seq_len, 1))
     y = np.array(y)
+    y = np.reshape(y, (y.shape[0], multi_steps))
     return X, y
 
 
@@ -61,8 +63,11 @@ test_norm, scaler = normalize_data(test)
 train_norm = train_norm[target]
 test_norm = test_norm[target]
 
-X_train, y_train = load_data(train_norm, 24)
-X_test, y_test = load_data(test_norm, 24)
+#set it to 1 to have only 1 prediction per sequence
+multi_steps = 1
+seq_len = 24
+X_train, y_train = load_data(train_norm, seq_len = 24, multi_steps = multi_steps)
+X_test, y_test = load_data(test_norm, seq_len = 24, multi_steps = multi_steps)
 X_train, X_valid, y_train, y_valid = get_validation_data (X_train, y_train, 0.80)
 
 
@@ -81,7 +86,7 @@ lstm_model.add(Dropout(0.15))
 lstm_model.add(LSTM(48,activation="tanh",return_sequences=False))
 lstm_model.add(Dropout(0.15))
 
-lstm_model.add(Dense(1))
+lstm_model.add(Dense(multi_steps))
 
 lstm_model.summary()
 
@@ -92,7 +97,7 @@ learning_rate_reduction = ReduceLROnPlateau(monitor = 'val_loss',
                                             verbose = 1,
                                             factor = 0.5,
                                             min_lr = 0.0001)
-earlystop = EarlyStopping(patience = 3, restore_best_weights = True, monitor = "val_loss",  mode = 'min')
+earlystop = EarlyStopping(patience = 3, restore_best_weights = True, monitor = "val_loss",  mode = 'min', verbose = 1)
 
 callbacks = [earlystop, learning_rate_reduction]
 
@@ -126,12 +131,12 @@ plt.xlabel('epochs')
 plt.legend(loc='upper right')
 plt.show()
 
-
+#this last part would have to be modified for multistep prediction
 y_test_original = scaler.inverse_transform(y_test.reshape(-1, 1)).flatten()
 y_pred_original_scale = scaler.inverse_transform(y_pred).flatten()
 
 #y values start from sequence length, in this case from 24
-results_LSTM = pd.DataFrame({"Date":test["Datetime"][24:], 'Actual': y_test_original,
+results_LSTM = pd.DataFrame({"Date":test["Datetime"][seq_len:], 'Actual': y_test_original,
                              'Predicted': y_pred_original_scale})
 
 
