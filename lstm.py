@@ -28,7 +28,10 @@ def normalize_data(df):
 def load_data(data, seq_len, multi_steps):
     X = []
     y = []
-    multi_steps_len = multi_steps-1
+    if multi_steps == 1:
+        multi_steps_len = multi_steps-1
+    else:
+        multi_steps_len = multi_steps
     for i in range(seq_len, len(data)-multi_steps_len):
         X.append(data.iloc[i-seq_len : i])
         y.append(data.iloc[i:i+multi_steps])
