@@ -8,7 +8,7 @@ from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
 import matplotlib
-matplotlib.use("QtAgg")
+matplotlib.use("Qt5Agg")
 import matplotlib.pyplot as plt
 
 
@@ -112,12 +112,14 @@ history = lstm_model.fit(X_train, y_train, epochs = 25, batch_size = 240, callba
 
 
 y_pred = lstm_model.predict(X_test)
+y_test_original = scaler.inverse_transform(y_test.reshape(-1, 1)).flatten()
+y_pred_original_scale = scaler.inverse_transform(y_pred).flatten()
 
-rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+rmse = np.sqrt(mean_squared_error(y_test_original, y_pred_original_scale))
 print (f"The root mean square error is equal to {np.round(rmse, 2)}")
-#rmse= 0.02
-#mape = mean_absolute_percentage_error(y_test, y_pred)
-#divide by 0
+#rmse= 247
+mape = mean_absolute_percentage_error(y_test_original, y_pred_original_scale)
+#mape = 1.29
 
 r2 = r2_score(y_test, y_pred)
 print (f"The R^2 is equal to {np.round(r2, 2)}")
@@ -132,11 +134,9 @@ plt.title('model loss')
 plt.ylabel('loss')
 plt.xlabel('epochs')
 plt.legend(loc='upper right')
-plt.show()
+plt.show(block = True)
 
 #this last part would have to be modified for multistep prediction
-y_test_original = scaler.inverse_transform(y_test.reshape(-1, 1)).flatten()
-y_pred_original_scale = scaler.inverse_transform(y_pred).flatten()
 
 #y values start from sequence length, in this case from 24
 results_LSTM = pd.DataFrame({"Date":test["Datetime"][seq_len:], 'Actual': y_test_original,
