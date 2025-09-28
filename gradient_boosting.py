@@ -4,7 +4,7 @@ from sklearn.model_selection import TimeSeriesSplit, GridSearchCV
 import numpy as np
 from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib
-matplotlib.use("QtAgg")
+matplotlib.use("Qt5Agg")
 import matplotlib.pyplot as plt
 matplotlib.interactive(True)
 
