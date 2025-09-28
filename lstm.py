@@ -7,8 +7,8 @@ from keras._tf_keras.keras.models import Sequential
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
-import matplotlib
-matplotlib.use("Qt5Agg")
+#import matplotlib
+#matplotlib.use("Qt5Agg")
 import matplotlib.pyplot as plt
 
 
@@ -19,9 +19,12 @@ target= "AEP_MW"
 
 
 
-def normalize_data(df):
-    scaler = MinMaxScaler()
-    normalized_data = scaler.fit_transform(df[target].values.reshape(-1,1))
+def normalize_data(df, scaler = None, test=True):
+    if test != True:
+        scaler = MinMaxScaler()
+        normalized_data = scaler.fit_transform(df[target].values.reshape(-1,1))
+    else:
+        normalized_data = scaler.transform(df[target].values.reshape(-1,1))
     df[target] = normalized_data
     return df, scaler
 
@@ -61,8 +64,8 @@ def mean_absolute_percentage_error(y_true, y_pred):
 
 
 
-train_norm, _ = normalize_data(train)
-test_norm, scaler = normalize_data(test)
+train_norm, scaler = normalize_data(train, test = False)
+test_norm, _ = normalize_data(test, scaler)
 train_norm = train_norm[target]
 test_norm = test_norm[target]
 
@@ -79,7 +82,7 @@ X_train, X_valid, y_train, y_valid = get_validation_data (X_train, y_train, 0.80
 
 
 lstm_model = Sequential()
-
+#input shape = (num_timesteps, num_features)
 lstm_model.add(LSTM(48,activation="tanh",return_sequences=True, input_shape=(X_train.shape[1],1)))
 lstm_model.add(Dropout(0.15))
 
@@ -117,9 +120,9 @@ y_pred_original_scale = scaler.inverse_transform(y_pred).flatten()
 
 rmse = np.sqrt(mean_squared_error(y_test_original, y_pred_original_scale))
 print (f"The root mean square error is equal to {np.round(rmse, 2)}")
-#rmse= 247
+#rmse= 249
 mape = mean_absolute_percentage_error(y_test_original, y_pred_original_scale)
-#mape = 1.29
+#mape = 1.31
 
 r2 = r2_score(y_test, y_pred)
 print (f"The R^2 is equal to {np.round(r2, 2)}")
@@ -154,3 +157,4 @@ plt.plot(range_x, y_pred_original_scale[:200], '-', label="prediction", color='r
 plt.ylabel('Global_active_power', size=14)
 plt.xlabel('Time step', size=14)
 plt.legend(fontsize=16)
+plt.show(block = True)
